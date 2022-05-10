@@ -12,47 +12,57 @@ function computerPlay() {
 
 /*
 function game() {
-
+*/
     let playerScore = 0;
     let computerScore = 0;
-
+/*
     function play() {
-
-    const playerInput = prompt("Choose rock, paper or scissors.");
 */
 
 
         function playRound(playerSelection, computerSelection) {
 
-            console.log(playerSelection + " - to zagral gracz")
-            console.log(computerSelection + " - to zagral komputer")
+            console.log(computerScore)
+            console.log(playerScore)
+
             playerDisplay.textContent = `You played: ${playerSelection}`;
             computerDisplay.textContent = `Computer played: ${computerSelection}`;
 
             if (playerSelection === "rock" && computerSelection === "paper"){
+                computerScore++;
+                computerScr.innerHTML = "Computer: " + computerScore;
                 return ("You lose! Paper beats Rock!");
             }   else if (playerSelection === "rock" && computerSelection === "scissors"){
+                playerScore++;
+                playerScr.innerHTML = "You: " + playerScore;
                 return ("You won! Rock beats Scissors!");
                 }
         
             if (playerSelection === "paper" && computerSelection === "scissors"){
+                computerScore++;
+                computerScr.innerHTML = "Computer: " + computerScore;
                 return "You lose! Scissors beats Paper!";
             }   else if (playerSelection === "paper" && computerSelection === "rock"){
+                playerScore++;
+                playerScr.innerHTML = "You: " + playerScore;
                 return "You won! Paper beats Rock!";
                 }
         
             if (playerSelection === "scissors" && computerSelection === "paper"){
+                playerScore++;
+                playerScr.innerHTML = "You: " + playerScore;
                 return "You won! Scissors beats Paper!";
             }  else if (playerSelection === "scissors" && computerSelection === "rock"){
+                computerScore++;
+                computerScr.innerHTML = "Computer: " + computerScore;
                 return "You lose! Rock beats Scissors!";
                 }
         
             if (playerSelection === computerSelection) {
                 return "Draw!";
                 } 
+                
         }
-
-/*      let score = playRound();
 
         function gameScore (score) {
             if (score.includes("won")){
@@ -66,14 +76,10 @@ function game() {
             }
 
         }
-        console.log(gameScore(score));
-        console.log(playerScore);
-        console.log(computerScore);
-
-        alert("Score is:\nYOU: "+ playerScore + "\nComputer: " + computerScore)
-
+     
+/*
 }
-
+ 
     for (i=0; i>=0; i++) {
         if (playerScore == 5 || computerScore == 5) {
             break;
@@ -84,8 +90,8 @@ function game() {
 }*/
 
 const container = document.querySelector('.container');
-const scoreDisplay = document.createElement('div');
-container.appendChild(scoreDisplay);
+const gameResult = document.createElement('div');
+container.appendChild(gameResult);
 
 const playerDisplay = document.createElement('div');
 container.appendChild(playerDisplay);
@@ -93,18 +99,22 @@ container.appendChild(playerDisplay);
 const computerDisplay = document.createElement("div");
 container.appendChild(computerDisplay);
 
+const playerScr = document.querySelector('.player-score');
+const computerScr = document.querySelector('.computer-score');
+
 let rock = document.getElementById("btn-rock");
 let paper = document.getElementById("btn-paper");
 let scissors = document.getElementById("btn-scissors");
 
 rock.addEventListener ("click", function() {
-    scoreDisplay.textContent = playRound("rock", computerPlay());
+    let result = playRound("rock", computerPlay());
+    gameResult.textContent = result;
 });
 
 paper.addEventListener ("click", function() {
-    scoreDisplay.textContent = playRound("paper", computerPlay());
+    gameResult.textContent = playRound("paper", computerPlay());
 });
 
 scissors.addEventListener ("click", function() {
-    scoreDisplay.textContent = playRound("scissors", computerPlay());
+    gameResult.textContent = playRound("scissors", computerPlay());
 });
