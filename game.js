@@ -31,50 +31,30 @@ function game() {
             if (playerSelection === "rock" && computerSelection === "paper"){
                 computerScore++;
                 computerScr.innerHTML = "Computer: " + computerScore;
-                return ("You lose! Paper beats Rock!");
             }   else if (playerSelection === "rock" && computerSelection === "scissors"){
                 playerScore++;
                 playerScr.innerHTML = "You: " + playerScore;
-                return ("You won! Rock beats Scissors!");
                 }
         
             if (playerSelection === "paper" && computerSelection === "scissors"){
                 computerScore++;
                 computerScr.innerHTML = "Computer: " + computerScore;
-                return "You lose! Scissors beats Paper!";
             }   else if (playerSelection === "paper" && computerSelection === "rock"){
                 playerScore++;
                 playerScr.innerHTML = "You: " + playerScore;
-                return "You won! Paper beats Rock!";
                 }
         
             if (playerSelection === "scissors" && computerSelection === "paper"){
                 playerScore++;
                 playerScr.innerHTML = "You: " + playerScore;
-                return "You won! Scissors beats Paper!";
             }  else if (playerSelection === "scissors" && computerSelection === "rock"){
                 computerScore++;
                 computerScr.innerHTML = "Computer: " + computerScore;
-                return "You lose! Rock beats Scissors!";
                 }
         
             if (playerSelection === computerSelection) {
-                return "Draw!";
                 } 
                 
-        }
-
-        function gameScore (score) {
-            if (score.includes("won")){
-                playerScore++;
-                return "Won!";
-            }   else if (score.includes("lose")) {
-                computerScore++;
-                return "Lose!";
-            }   else {
-                return "Draw!";
-            }
-
         }
      
 /*
