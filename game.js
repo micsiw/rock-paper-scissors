@@ -10,64 +10,75 @@ function computerPlay() {
     }
 }
 
-/*
-function game() {
-*/
-    let playerScore = 0;
-    let computerScore = 0;
-/*
-    function play() {
-*/
+let playerScore = 0;
+let computerScore = 0;
 
+function playRound(playerSelection, computerSelection) {
 
-        function playRound(playerSelection, computerSelection) {
+    console.log(computerScore)
+    console.log(playerScore)
 
-            console.log(computerScore)
-            console.log(playerScore)
+    playerDisplay.textContent = `You played: ${playerSelection}`;
+    computerDisplay.textContent = `Computer played: ${computerSelection}`;
 
-            playerDisplay.textContent = `You played: ${playerSelection}`;
-            computerDisplay.textContent = `Computer played: ${computerSelection}`;
-
-            if (playerSelection === "rock" && computerSelection === "paper"){
-                computerScore++;
-                computerScr.innerHTML = "Computer: " + computerScore;
-            }   else if (playerSelection === "rock" && computerSelection === "scissors"){
-                playerScore++;
-                playerScr.innerHTML = "You: " + playerScore;
-                }
-        
-            if (playerSelection === "paper" && computerSelection === "scissors"){
-                computerScore++;
-                computerScr.innerHTML = "Computer: " + computerScore;
-            }   else if (playerSelection === "paper" && computerSelection === "rock"){
-                playerScore++;
-                playerScr.innerHTML = "You: " + playerScore;
-                }
-        
-            if (playerSelection === "scissors" && computerSelection === "paper"){
-                playerScore++;
-                playerScr.innerHTML = "You: " + playerScore;
-            }  else if (playerSelection === "scissors" && computerSelection === "rock"){
-                computerScore++;
-                computerScr.innerHTML = "Computer: " + computerScore;
-                }
-        
-            if (playerSelection === computerSelection) {
-                } 
-                
+    if (playerSelection === "rock" && computerSelection === "paper"){
+        computerScore++;
+        computerScr.innerHTML = "Computer: " + computerScore;
+    }   else if (playerSelection === "rock" && computerSelection === "scissors"){
+        playerScore++;
+        playerScr.innerHTML = "You: " + playerScore;
         }
-     
-/*
+        
+    if (playerSelection === "paper" && computerSelection === "scissors"){
+        computerScore++;
+        computerScr.innerHTML = "Computer: " + computerScore;
+    }   else if (playerSelection === "paper" && computerSelection === "rock"){
+        playerScore++;
+        playerScr.innerHTML = "You: " + playerScore;
+        }
+        
+    if (playerSelection === "scissors" && computerSelection === "paper"){
+        playerScore++;
+        playerScr.innerHTML = "You: " + playerScore;
+    }   else if (playerSelection === "scissors" && computerSelection === "rock"){
+        computerScore++;
+        computerScr.innerHTML = "Computer: " + computerScore;
+        }
+
+    if (playerScore === 5 || computerScore === 5){
+        isGameOver();
+    }
 }
- 
-    for (i=0; i>=0; i++) {
-        if (playerScore == 5 || computerScore == 5) {
-            break;
-        }
-        play();
-    }  
+        
+function isGameOver() {
+    if (playerScore === 5) {
+        playerWonMsg.textContent = 'Congratulations! You won! If u want to play again click button below.';           
+    }   else if (computerScore === 5) {
+        computerWonMsg.textContent = 'Woopsie! You lost. If u want to play again click button below.';
+    }
+}
 
-}*/
+let rock = document.getElementById("btn-rock");
+let paper = document.getElementById("btn-paper");
+let scissors = document.getElementById("btn-scissors");
+
+rock.addEventListener ("click", function() {
+    if (playerScore < 5 && computerScore < 5) {
+        playRound("rock", computerPlay());
+    }
+});
+    
+paper.addEventListener ("click", function() {
+    if (playerScore < 5 && computerScore < 5) {
+            playRound("paper", computerPlay());
+    }
+});
+    
+scissors.addEventListener ("click", function() {
+    if (playerScore < 5 && computerScore < 5) {
+            playRound("scissors", computerPlay());
+    }
+});
 
 const container = document.querySelector('.container');
 const gameResult = document.createElement('div');
@@ -82,19 +93,9 @@ container.appendChild(computerDisplay);
 const playerScr = document.querySelector('.player-score');
 const computerScr = document.querySelector('.computer-score');
 
-let rock = document.getElementById("btn-rock");
-let paper = document.getElementById("btn-paper");
-let scissors = document.getElementById("btn-scissors");
+const playerWonMsg = document.createElement('div');
+container.appendChild(playerWonMsg);
 
-rock.addEventListener ("click", function() {
-    let result = playRound("rock", computerPlay());
-    gameResult.textContent = result;
-});
+const computerWonMsg = document.createElement('div');
+container.appendChild(computerWonMsg);
 
-paper.addEventListener ("click", function() {
-    gameResult.textContent = playRound("paper", computerPlay());
-});
-
-scissors.addEventListener ("click", function() {
-    gameResult.textContent = playRound("scissors", computerPlay());
-});
