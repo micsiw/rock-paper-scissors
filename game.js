@@ -1,22 +1,7 @@
-function computerPlay() {
-    let score = Math.floor(Math.random() * 3); 
-
-    if (score == 0) {
-        return "rock";
-    }   else if (score == 1) {
-        return "paper";
-    }   else if (score == 2) {
-        return "scissors";
-    }
-}
-
 let playerScore = 0;
 let computerScore = 0;
 
 function playRound(playerSelection, computerSelection) {
-
-    console.log(computerScore)
-    console.log(playerScore)
 
     playerDisplay.textContent = `You played: ${playerSelection}`;
     computerDisplay.textContent = `Computer played: ${computerSelection}`;
@@ -46,16 +31,34 @@ function playRound(playerSelection, computerSelection) {
         }
 
     if (playerScore === 5 || computerScore === 5){
-        isGameOver();
+        gameSummary();
+    }
+}
+
+function computerPlay() {
+    let score = Math.floor(Math.random() * 3); 
+
+    if (score == 0) {
+        return "rock";
+    }   else if (score == 1) {
+        return "paper";
+    }   else if (score == 2) {
+        return "scissors";
     }
 }
         
-function isGameOver() {
+function gameSummary() {
     if (playerScore === 5) {
-        playerWonMsg.textContent = 'Congratulations! You won! If u want to play again click button below.';           
+        playerWonMsg.textContent = 'Congratulations! You won! If you want to play again, click button below.';
+        container.appendChild(restartButton);           
     }   else if (computerScore === 5) {
-        computerWonMsg.textContent = 'Woopsie! You lost. If u want to play again click button below.';
+        computerWonMsg.textContent = 'Woopsie! You lost. If you want to play again, click button below.';
+        container.appendChild(restartButton);
     }
+}
+
+function resetGame() {
+    window.location.reload();
 }
 
 let rock = document.getElementById("btn-rock");
@@ -98,4 +101,8 @@ container.appendChild(playerWonMsg);
 
 const computerWonMsg = document.createElement('div');
 container.appendChild(computerWonMsg);
+
+const restartButton = document.createElement('button');
+restartButton.textContent = 'Play again';
+restartButton.onclick = resetGame;
 
