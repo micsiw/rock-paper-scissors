@@ -1,9 +1,19 @@
 body {
-    background-color: darkgrey;
+    background-color: #118ab2;
     display: flex;
     min-height: 98vh;
     flex-direction: column;
+    font-family: "Roboto", sans-serif;
 }
+
+.logo {
+    height: auto;
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 .content {
     flex: 1;
@@ -30,4 +40,14 @@ body {
     align-items: center;
     gap: 20px;
     padding-bottom: 100px;
+}
+
+.game-controls > input {
+    width: 100px;
+    height: 100px;
+    transition: transform .2s;
+}
+
+.game-controls > input:hover {
+    transform: scale(1.2);
 }
