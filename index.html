@@ -13,22 +13,31 @@
 <div id="welcome-message">Click and play the game of rock, paper and scissors in the best of 5.</div>
 
 <div class="content">
-    <div class="game-controls">
-        <input type="image" src="images/stone.png" id="btn-rock">
-        <input type="image" src="images/paper-airplane.png" id="btn-paper">
-        <input type="image" src="images/scissors.png" id="btn-scissors">
+    <div class="game-display">
+        <div class="player-controls">
+            <input type="image" src="images/stone.png" id="btn-rock">
+            <input type="image" src="images/paper-airplane.png" id="btn-paper">
+            <input type="image" src="images/scissors.png" id="btn-scissors">
+        </div>
+        <div class="player-score">You: 0</div>
+    </div>
+    <div class="computer-display">
+        <div class="computer-moves">
+            <img class="computer-decision">
+            <img src="images/ai.png" class="computer-icon" alt="Image of the computer waiting for turn">
+        </div>
+        <div class="computer-score">Computer: 0</div>
     </div>
 
-
+</div>
     <div class="container">
         <div class="scoreboard">This is scoreboard.
-            <div class="player-score">You: 0</div>
-            <div class="computer-score">Computer: 0</div>
+            
         </div>
     </div>
-</div>
 
-<div id="footer">Game was created as assignment for The Odin Project -&nbsp;<a href="https://www.theodinproject.com/">www.theodinproject.com</a></div>   </div>
+
+<div id="footer">Game was created as assignment for &nbsp;<a href="https://www.theodinproject.com/">The Odin Project</a></div>
 
 <script src="game.js">
     

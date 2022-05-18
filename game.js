@@ -3,6 +3,21 @@ let computerScore = 0;
 
 function playRound(playerSelection, computerSelection) {
 
+    switch (computerSelection) {
+        case "rock":
+            computerDecision.style.display = "inline";
+            computerDecision.src = "images/stone.png"; 
+            break;
+        case "paper":
+            computerDecision.style.display = "inline";
+            computerDecision.src = "images/paper-airplane.png"; 
+            break;
+        case "scissors":
+            computerDecision.style.display = "inline";
+            computerDecision.src = "images/scissors.png"; 
+            break;
+    }
+
     playerDisplay.textContent = `You played: ${playerSelection}`;
     computerDisplay.textContent = `Computer played: ${computerSelection}`;
 
@@ -92,6 +107,8 @@ container.appendChild(playerDisplay);
 
 const computerDisplay = document.createElement("div");
 container.appendChild(computerDisplay);
+
+const computerDecision = document.querySelector('.computer-decision');
 
 const playerScr = document.querySelector('.player-score');
 const computerScr = document.querySelector('.computer-score');
