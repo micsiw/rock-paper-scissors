@@ -18,32 +18,39 @@ function playRound(playerSelection, computerSelection) {
             break;
     }
 
-    playerDisplay.textContent = `You played: ${playerSelection}`;
-    computerDisplay.textContent = `Computer played: ${computerSelection}`;
-
     if (playerSelection === "rock" && computerSelection === "paper"){
         computerScore++;
         computerScr.innerHTML = "Computer: " + computerScore;
+        gameCommentary.innerHTML = "You lose! Paper beats rock."
     }   else if (playerSelection === "rock" && computerSelection === "scissors"){
         playerScore++;
         playerScr.innerHTML = "You: " + playerScore;
+        gameCommentary.innerHTML = "You won! Rock beats scissors."
         }
         
     if (playerSelection === "paper" && computerSelection === "scissors"){
         computerScore++;
         computerScr.innerHTML = "Computer: " + computerScore;
+        gameCommentary.innerHTML = "Damn! Scissors cut paper."
     }   else if (playerSelection === "paper" && computerSelection === "rock"){
         playerScore++;
         playerScr.innerHTML = "You: " + playerScore;
+        gameCommentary.innerHTML = "Nice! Paper beats rock."
         }
         
     if (playerSelection === "scissors" && computerSelection === "paper"){
         playerScore++;
         playerScr.innerHTML = "You: " + playerScore;
+        gameCommentary.innerHTML = "Keep it on! Scissors cut paper."
     }   else if (playerSelection === "scissors" && computerSelection === "rock"){
         computerScore++;
         computerScr.innerHTML = "Computer: " + computerScore;
+        gameCommentary.innerHTML = "You lose! Rock blunts scissors."
         }
+
+    if (playerSelection === computerSelection){
+        gameCommentary.innerHTML = "Draw!"
+    }
 
     if (playerScore === 5 || computerScore === 5){
         gameSummary();
@@ -65,10 +72,10 @@ function computerPlay() {
 function gameSummary() {
     if (playerScore === 5) {
         playerWonMsg.textContent = 'Congratulations! You won! If you want to play again, click button below.';
-        container.appendChild(restartButton);           
+        exitMsg.appendChild(restartButton);           
     }   else if (computerScore === 5) {
         computerWonMsg.textContent = 'Woopsie! You lost. If you want to play again, click button below.';
-        container.appendChild(restartButton);
+        exitMsg.appendChild(restartButton);
     }
 }
 
@@ -98,28 +105,24 @@ scissors.addEventListener ("click", function() {
     }
 });
 
-const container = document.querySelector('.container');
-const gameResult = document.createElement('div');
-container.appendChild(gameResult);
-
-const playerDisplay = document.createElement('div');
-container.appendChild(playerDisplay);
-
-const computerDisplay = document.createElement("div");
-container.appendChild(computerDisplay);
+const exitMsg = document.querySelector('.exit-message');
+exitMsg.style.fontSize = "28px";
 
 const computerDecision = document.querySelector('.computer-decision');
+
+const gameCommentary = document.querySelector('.commentary');
 
 const playerScr = document.querySelector('.player-score');
 const computerScr = document.querySelector('.computer-score');
 
 const playerWonMsg = document.createElement('div');
-container.appendChild(playerWonMsg);
+exitMsg.appendChild(playerWonMsg);
 
 const computerWonMsg = document.createElement('div');
-container.appendChild(computerWonMsg);
+exitMsg.appendChild(computerWonMsg);
 
-const restartButton = document.createElement('button');
-restartButton.textContent = 'Play again';
+const restartButton = document.createElement('input');
+restartButton.type = "image";
+restartButton.src = "images/play-again.png"
 restartButton.onclick = resetGame;
 
